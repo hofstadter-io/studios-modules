@@ -1,0 +1,40 @@
+type:
+  name: post
+
+  owned:
+    name: author
+    type: has-many
+
+  visibility:
+    enabled: true
+    default: false
+    public: published
+    private: draft
+
+  fields:
+  - name: title
+    type: string
+    length: 128
+  - name: content
+    type: text
+
+  relations:
+  - name: comments
+    type: type.modules.blog.comment
+    relation: one-to-many
+  - name: tags
+    type: type.modules.blog.tag
+    relation: many-to-many
+
+  auth:
+    view:
+      public: ['user']
+      private: ['admin']
+    create: ['user']
+    update: ['user']
+    delete: ['admin']
+
+  files:
+    - name: CommentOwnerEditable
+      src: design/modules/blog/components/CommentOwnerEditable.jsx
+      dst: components/CommentOwnerEditable.jsx

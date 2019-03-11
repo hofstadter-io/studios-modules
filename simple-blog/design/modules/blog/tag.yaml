@@ -1,0 +1,19 @@
+type:
+  name: tag
+
+  fields:
+  - name: value
+    type: string
+    length: 64
+
+  relations:
+  - name: posts
+    type: type.modules.blog.post
+    relation: belongs-to-many
+
+  auth:
+    view: ['user', 'admin']
+    create: ['admin']
+    update: ['admin']
+    delete: ['admin']
+

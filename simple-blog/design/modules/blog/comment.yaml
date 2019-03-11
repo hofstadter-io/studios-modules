@@ -1,0 +1,23 @@
+type:
+  name: comment
+
+  owned:
+    name: author
+    type: has-many
+
+  fields:
+  - name: content
+    type: string
+    length: 2000
+
+  relations:
+  - name: post
+    type: type.modules.blog.post
+    relation: belongs-to-one
+
+  auth:
+    view:   ['user']
+    create: ['user']
+    update: ['admin']
+    delete: ['admin']
+

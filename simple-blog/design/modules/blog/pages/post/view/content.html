@@ -1,0 +1,97 @@
+<RS.Container>
+  <RS.Row style={ {marginTop: '1em'} }>
+
+    <RS.Col lg="2">
+      <Link id="back-button" to="/posts">
+        {t('post.btn.back')}
+      </Link>
+    </RS.Col>
+
+    <RS.Col lg="6">
+    </RS.Col>
+
+    <RS.Col lg="2">
+    { currentUser && post && (currentUser.id == post.authorId) ? (
+    <div className="btn-group" role="group" aria-label="Owner options">
+      <button type="button" className="btn btn-primary">
+        <Link to={"/post/edit/" + post.id } className="text-white">
+          {t('post.btn.edit')}
+        </Link>
+      </button>
+      <button type="button" className="btn btn-danger" onClick={() => postDelete(post.id)}>
+          {t('post.btn.delete')}
+      </button>
+    </div>
+    ) : "" }
+    </RS.Col>
+  </RS.Row>
+
+  <div className="row justify-content-center">
+    { loadingPost ?
+      <RS.Col lg="8">
+        <h1>loading</h1>
+      </RS.Col>
+    :
+      !post ?
+      <RS.Col lg="8">
+        <h1>not post</h1>
+      </RS.Col>
+
+      :
+
+      <RS.Col lg="8">
+        <h1>{ post.title }</h1>
+        <h6>by { post.author ? post.author.username : "???"} { post.published ? " - Published" : " - Draft" }</h6>
+        <hr />
+        <pre>{ post.content }</pre>
+        <hr />
+        <h3>Comments</h3>
+        { !loadingComments && comments && comments.edges && comments.edges.length > 0 ?
+            (
+
+              <RS.ListGroup>
+              { comments.edges.map( edge => {
+              const c = edge.node;
+              return (
+                <CommentOwnerEditable key={c.id}
+                  comment={c} currentUser={currentUser}
+                  commentUpdate={props.updateComments}
+                  commentDelete={props.deleteComments}
+                />
+              )
+              } ) }
+              </RS.ListGroup>
+
+            )
+          :
+            (
+              <pre>Be the first to add a comment.</pre>
+            )
+          }
+
+          <div>
+            <br />
+            <pre>Add a comment</pre>
+            <div className="form-group" style={ { flex: 1 } }>
+              <input id="commentContent" type="textarea" className="form-control align-self-stretch"/>
+            </div>
+            <div className="align-self-end">
+              <button className="btn btn-success btn-sm" onClick={() => {
+                let content = document.getElementById("commentContent").value;
+                let values = { 
+                  postId: post.id,
+                  content,
+                };
+                console.log("comment values", values)
+                props.createComments(values, "nowhere");
+                document.getElementById("commentContent").value = ""
+                }}>comment</button>
+            </div>
+          </div>
+          <br />
+
+      </RS.Col>
+    }
+  </div>
+</RS.Container>
+

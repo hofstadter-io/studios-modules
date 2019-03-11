@@ -1,0 +1,28 @@
+module:
+  name: blog
+
+  pages:
+
+    - name: edit-post
+      route: "/post/edit/:id"
+
+      style:
+        - "design/modules/blog/pages/post/edit/style.scss"
+
+      content:
+        - "design/modules/blog/pages/post/edit/content.html"
+
+      components:
+        - name: PostForm
+          component: type.modules.blog.post.components.DefaultForm
+
+      current-user: true
+
+      data:
+        - name: post
+          type: type.modules.blog.post
+          query:
+            type: view
+          mutations:
+            - update
+

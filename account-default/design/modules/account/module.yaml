@@ -19,7 +19,7 @@ module:
     file: design/modules/account/locales/es.json
 
   seeds:
-    file: seeds/users.json
+    file: design/modules/account/seeds/accounts.json
     types:
       - name: account
         data: accounts

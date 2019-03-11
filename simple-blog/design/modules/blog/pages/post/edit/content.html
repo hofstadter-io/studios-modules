@@ -1,0 +1,31 @@
+<div className="justify-content-center">
+  { loadingPost ?
+    <RS.Container>
+      <RS.Row>
+          <RS.Col lg="8">
+            <h1>loading</h1>
+          </RS.Col>
+        </RS.Row>
+    </RS.Container>
+  :
+  <div>
+    <Link to={"/post/" + post.id}>
+      {t('post.btn.back')}
+    </Link>
+
+    <RS.Container>
+      <RS.Row>
+        <RS.Col lg="8">
+          <PostForm
+            post={ post }
+            onSubmit={(values) => {
+            props.updatePost(post.id, values)
+          }}
+          />
+        </RS.Col>
+      </RS.Row>
+    </RS.Container>
+  </div>
+  }
+
+</div>

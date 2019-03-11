@@ -1,0 +1,39 @@
+module:
+  name: blog
+
+  types:
+  - name: post
+    type: type.modules.blog.post
+  - name: comment
+    type: type.modules.blog.comment
+  - name: tag
+    type: type.modules.blog.tag
+
+  seeds:
+    file: design/modules/blog/seeds/posts.json
+    types:
+      - name: tag
+        data: tags
+        type: type.modules.blog.tag
+      - name: post
+        data: posts
+        type: type.modules.blog.post
+        lookup:
+          tags: value
+
+  components: []
+  forms: []
+
+  pages:
+    - name: all-posts
+    - name: user-posts
+    - name: new-post
+    - name: edit-post
+    - name: view-post
+
+  translations:
+  - name: en
+    file: design/modules/blog/locales/en.json
+  - name: es
+    file: design/modules/blog/locales/es.json
+

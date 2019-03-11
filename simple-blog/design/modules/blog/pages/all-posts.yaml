@@ -1,0 +1,34 @@
+module:
+  name: blog
+
+  pages:
+
+    - name: all-posts
+      route: "/posts"
+
+      style:
+        - "design/modules/blog/pages/post/list/style.scss"
+
+      content:
+        - "design/modules/blog/pages/post/list/content.html"
+
+      imports:
+        - library: "date-fns"
+          nested:
+            - format
+            - formatRelative
+            - distanceInWords
+            - subDays
+
+      current-user: true
+
+      data:
+        - name: posts
+          type: type.modules.blog.post
+          query:
+            type: list
+            sync: true
+          mutations:
+            - create
+            - update
+            - delete

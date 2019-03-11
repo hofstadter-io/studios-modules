@@ -1,0 +1,52 @@
+module:
+  name: blog
+
+  pages:
+
+    - name: view-post
+      route: "/post/:id"
+
+      style:
+        - "design/modules/blog/pages/post/view/style.scss"
+
+      content:
+        - "design/modules/blog/pages/post/view/content.html"
+
+      imports:
+        - library: "date-fns"
+          nested:
+            - format
+            - formatRelative
+            - distanceInWords
+            - subDays
+
+      components:
+        - name: CommentOwnerEditable
+          component: type.modules.blog.post.components.CommentOwnerEditable
+
+      current-user: true
+
+      data:
+        - name: post
+          type: type.modules.blog.post
+          query:
+            type: view
+            sync: true
+          mutations:
+            - create
+            - update
+            - delete
+
+        - name: comments
+          type: type.modules.blog.comment
+          query:
+            type: list
+            sync: true
+            variables:
+              - name: postId
+                source: props.post.id
+
+          mutations:
+            - create
+            - update
+            - delete

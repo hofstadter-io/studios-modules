@@ -1,0 +1,33 @@
+module:
+  name: blog
+
+  pages:
+
+    - name: user-posts
+      route: "/posts/:userId"
+
+      style:
+        - "design/modules/blog/pages/post/user/style.scss"
+
+      content:
+        - "design/modules/blog/pages/post/user/content.html"
+
+      imports:
+        - library: "date-fns"
+          nested:
+            - format
+            - formatRelative
+            - distanceInWords
+            - subDays
+
+      current-user: true
+
+      data:
+        - name: posts
+          type: type.modules.blog.post
+          query:
+            type: list
+            filter:
+              - name: userId
+                source: route.path-params.userId
+

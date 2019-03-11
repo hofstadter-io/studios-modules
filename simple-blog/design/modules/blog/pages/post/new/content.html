@@ -1,0 +1,16 @@
+
+<Link to={"/posts"}>
+  {t('post.btn.back')}
+</Link>
+
+<RS.Container>
+  <RS.Row>
+    <RS.Col lg="8">
+    <h1>New Post</h1>
+    <PostForm onSubmit={(values) => {
+      props.createPost(values, "nowhere")
+    }} />
+    </RS.Col>
+  </RS.Row>
+</RS.Container>
+

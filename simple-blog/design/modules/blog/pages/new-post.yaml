@@ -1,0 +1,25 @@
+module:
+  name: blog
+
+  pages:
+
+    - name: new-post
+      route: "/post/new"
+
+      style:
+        - "design/modules/blog/pages/post/new/style.scss"
+
+      content:
+        - "design/modules/blog/pages/post/new/content.html"
+
+      components:
+        - name: PostForm
+          component: type.modules.blog.post.components.DefaultForm
+
+      current-user: true
+
+      data:
+        - name: post
+          type: type.modules.blog.post
+          mutations:
+            - create

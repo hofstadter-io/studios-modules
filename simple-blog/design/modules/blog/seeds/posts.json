@@ -1,0 +1,74 @@
+{
+  "tags": [
+    {
+      "value": "hello"
+    },
+    {
+      "value": "admin"
+    },
+    {
+      "value": "hofstadter"
+    }
+  ],
+  "posts": [
+    {
+      "author": "admin",
+      "title": "Hello World",
+      "content": "ipsum lorem",
+      "tags": [
+        { "value": "hello" },
+        { "value": "admin" }
+      ],
+      "comments": [
+        {
+          "author": "bob",
+          "content": "nice post!"
+        },
+        {
+          "author": "alice",
+          "content": "I second that notion"
+        }
+      ]
+    },
+    {
+      "author": "bob",
+      "title": "What's with the Turtles?",
+      "content": "like, why are they going all the way down...?",
+      "published": true,
+      "tags": [
+        { "value": "hello" },
+        { "value": "hofstadter" }
+      ],
+      "comments": [
+        {
+          "author": "admin",
+          "content": "nice post!"
+        },
+        {
+          "author": "alice",
+          "content": "I second that notion"
+        }
+      ]
+    },
+    {
+      "author": "bob",
+      "title": "What's with the Turtles? pt2",
+      "content": "like, why are they going all the way down...?",
+      "tags": [
+        { "value": "hello" },
+        { "value": "hofstadter" }
+      ]
+    },
+    {
+      "author": "alice",
+      "title": "How about them Turtles!",
+      "content": "they hold the world up",
+      "published": true,
+      "tags": [
+        { "value": "hello" },
+        { "value": "hofstadter" }
+      ]
+    }
+  ]
+}
+

@@ -23,7 +23,8 @@
     },
     "field": {
       "title": "Title",
-      "content": "Content"
+      "content": "Content",
+      "published": "Published"
     }
   }
 }

@@ -31,7 +31,7 @@ type:
       public: ['user']
       private: ['admin']
     create: ['user']
-    update: ['user']
+    update: []
     delete: ['admin']
 
   files:

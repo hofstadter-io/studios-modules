@@ -10,7 +10,7 @@ module:
     type: type.modules.blog.tag
 
   seeds:
-    file: design/modules/blog/seeds/posts.json
+    file: design-vendor/modules/blog/seeds/posts.json
     types:
       - name: tag
         data: tags
